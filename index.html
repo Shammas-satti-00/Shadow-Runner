@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shadow Runner — Step 8 (HUD)</title>
+  <style>
+    html,body { margin:0; height:100%; background:#000; overflow:hidden; font-family:Arial, sans-serif; }
+    #hud {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      color: #e6f7f3;
+      z-index: 10;
+      user-select: none;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+    #hud .row { margin-bottom:8px; display:flex; align-items:center; gap:12px; }
+    #score { font-size:20px; font-weight:700; }
+    #lives { font-size:16px; color:#ffd1d1; }
+    #powerups { display:flex; gap:8px; align-items:center; }
+    .pu {
+      background:rgba(255,255,255,0.05);
+      padding:6px 8px;
+      border-radius:8px;
+      min-width:120px;
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    #startScreen, #gameOverOverlay {
+      position: absolute;
+      top:50%; left:50%;
+      transform: translate(-50%,-50%);
+      z-index: 20;
+      color: #fff;
+      text-align:center;
+      background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+      padding: 20px 30px;
+      border-radius: 10px;
+    }
+    button {
+      background:#00ffcc; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-weight:600;
+    }
+    #gameOverOverlay { display:none; }
+  </style>
+</head>
+<body>
+  <div id="hud">
+    <div class="row"><div id="score">Score: 0</div><div id="lives">Lives: 3</div></div>
+    <div class="row" id="powerupsRow"><div id="powerups" ></div></div>
+  </div>
+
+  <div id="startScreen">
+    <h2>Shadow Runner</h2>
+    <p>Controls: A ← | D → | Space = Jump</p>
+    <button id="startBtn">Start Game</button>
+  </div>
+
+  <div id="gameOverOverlay">
+    <h2 id="gameOverTitle">Game Over</h2>
+    <p id="finalScore">Score: 0</p>
+    <div style="margin-top:12px;">
+      <button id="restartBtn">Restart</button>
+    </div>
+  </div>
+
+  <!-- three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
